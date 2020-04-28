@@ -33,15 +33,15 @@ final class PlainTextDeoderTests: XCTestCase {
       XCTAssertEqual(decoded?.bool.description, resource)
     }
     do {
-         let resource = "true"
-         let decoder = PlainTextDecoder(resource)
-         let decoded = try? Decoded.init(from: decoder)
-         XCTAssertNotNil(decoded)
-         XCTAssertEqual(decoded?.bool.description, resource)
-       }
+      let resource = "true"
+      let decoder = PlainTextDecoder(resource)
+      let decoded = try? Decoded.init(from: decoder)
+      XCTAssertNotNil(decoded)
+      XCTAssertEqual(decoded?.bool.description, resource)
+    }
     do {
-         let resource = "notBool"
-         let decoder = PlainTextDecoder(resource)
+      let resource = "notBool"
+      let decoder = PlainTextDecoder(resource)
       XCTAssertThrowsError(try Decoded.init(from: decoder)) { e in
         let decodingError = e as! DecodingError
         switch decodingError {
@@ -49,9 +49,9 @@ final class PlainTextDeoderTests: XCTestCase {
           default: XCTFail("Wrong Error reason")
         }
       }
-         
-         
-       }
+      
+      
+    }
   }
   
   static var allTests = [
