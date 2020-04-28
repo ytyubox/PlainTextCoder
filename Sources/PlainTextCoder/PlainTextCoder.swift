@@ -39,10 +39,9 @@ struct SVDC: SingleValueDecodingContainer {
   }
   
   func decode(_ type: Bool.Type) throws -> Bool {
-//    try Bool(text).ifNil {
-//      throw DecodingError.dataCorruptedError(in: self, debugDescription: "text: \(text) is not a bool")
-//    }
-    fatalError()
+    try Bool(text).tryNil {
+      DecodingError.dataCorruptedError(in: self, debugDescription: #"text: "\#(text)" is not a \#(type)"#)
+    }
   }
   
   func decode(_ type: String.Type) throws -> String {
@@ -50,7 +49,9 @@ struct SVDC: SingleValueDecodingContainer {
   }
   
   func decode(_ type: Double.Type) throws -> Double {
- fatalError()
+    try Double(text).tryNil {
+        DecodingError.dataCorruptedError(in: self, debugDescription: #"text: "\#(text)" is not a \#(type)"#)
+      }
   }
   
   func decode(_ type: Float.Type) throws -> Float {

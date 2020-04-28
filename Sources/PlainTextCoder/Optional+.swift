@@ -7,12 +7,11 @@
 
 import Foundation
 
-//extension Optional {
-//  func ifNil(_ throwing: () throws ->Void) throws -> Wrapped {
-//    switch self {
-//      case .none:        try throwing()
-//      case .some(let w): return w
-//    }
-//    return 
-//  }
-//}
+extension Optional {
+  func tryNil(_ throwing: () -> Error) throws -> Wrapped {
+    guard let w = self else {
+      throw throwing()
+    }
+    return w
+  }
+}
