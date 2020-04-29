@@ -18,5 +18,6 @@ final class PlainTextEncoderTests: XCTestCase {
     let encoder = PlainTextEncoder()
     try! text.encode(to: encoder)
     XCTAssertEqual(encoder.text, text.message)
+    XCTAssertEqual(encoder.data, text.message.data(using: .utf8))
   }
 }

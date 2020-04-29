@@ -1,13 +1,14 @@
+import Foundation.NSDate
 public final class PlainTextEncoder: Encoder {
-  public init(codingPath: [CodingKey] = [], userInfo: [CodingUserInfoKey : Any] = [:]) {
-    self.codingPath = codingPath
-    self.userInfo = userInfo
+  public init(encoding: String.Encoding = .utf8) {
+    self.encoding = encoding
   }
   
   public var codingPath: [CodingKey] = []
-  
+  public var encoding: String.Encoding
   public var userInfo: [CodingUserInfoKey : Any] = [:]
   public var text = ""
+  public var data:Data {text.data(using: encoding)!}
   public func container<Key: CodingKey>(keyedBy type: Key.Type) -> KeyedEncodingContainer<Key> {
     fatalError("Plaintext encoding does not support dictionaries.")
   }

@@ -13,7 +13,7 @@ final class PlainTextDeoderTests: XCTestCase {
     }
     let resource = "Some text"
     let decoder = PlainTextDecoder(resource)
-    let decoded = try? Decoded.init(from: decoder)
+    let decoded = try? Decoded(from: decoder)
     XCTAssertNotNil(decoded)
     XCTAssertEqual(decoded?.text, resource)
   }
