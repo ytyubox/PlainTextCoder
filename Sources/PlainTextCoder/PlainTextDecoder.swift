@@ -10,11 +10,11 @@ public final class PlainTextDecoder:Decoder {
   public var userInfo: [CodingUserInfoKey : Any] =  [:]
   
   public func container<Key>(keyedBy type: Key.Type) throws -> KeyedDecodingContainer<Key> where Key : CodingKey {
-    fatalError()
+    fatalError("Plaintext decoding does not support dictionaries.")
   }
   
   public func unkeyedContainer() throws -> UnkeyedDecodingContainer {
-    fatalError()
+    fatalError("Plaintext decoding does not support arrays.")
   }
   
   public func singleValueContainer() throws -> SingleValueDecodingContainer {
